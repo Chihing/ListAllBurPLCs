@@ -75,8 +75,15 @@ namespace ListAllBurPLCs
             //remainingEntries--;
             //Application.Exit();
 
-            if (--remainingEntries == 0) Application.Exit();
+            if (--remainingEntries == 0) WaitForKeyStroke();
         }
 
+        private static void WaitForKeyStroke()
+        {
+            Console.WriteLine();
+            Console.WriteLine("press any key...");
+            Console.ReadKey(true);
+            Application.Exit();
+        }
     }
 }

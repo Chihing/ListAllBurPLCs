@@ -72,9 +72,6 @@ namespace ListAllBurPLCs
 
             Console.WriteLine(targetTypeDescription + "\t: " + ipAddress);
 
-            //remainingEntries--;
-            //Application.Exit();
-
             if (--remainingEntries == 0) WaitForKeyStroke();
         }
 

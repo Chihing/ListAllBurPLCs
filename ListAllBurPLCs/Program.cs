@@ -49,11 +49,18 @@ namespace ListAllBurPLCs
         private static void NetworkAdapters_SearchCompleted(object sender, ErrorEventArgs e)
         {
             remainingEntries = service.SNMP.NetworkAdapters.Count;
-
-            foreach (NetworkAdapter nwAdapt in service.SNMP.NetworkAdapters.Values)
+            if (remainingEntries > 0)
             {
-                nwAdapt.Variables.ValuesRead += Variables_ValuesRead1; ;
-                nwAdapt.Variables.Read();
+                foreach (NetworkAdapter nwAdapt in service.SNMP.NetworkAdapters.Values)
+                {
+                    nwAdapt.Variables.ValuesRead += Variables_ValuesRead1; ;
+                    nwAdapt.Variables.Read();
+                }
+            }
+            else
+            {
+                Console.WriteLine("No PLC found.");
+                WaitForKeyStroke();
             }
         }
 
